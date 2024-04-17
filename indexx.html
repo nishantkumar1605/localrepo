@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <style>
+        /* Resetting default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling the header */
+        header {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        /* Styling the main content area */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling the video cards */
+        .video-card {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Styling the video thumbnail */
+        .video-thumbnail {
+            flex: 0 0 240px;
+            margin-right: 10px;
+        }
+
+        /* Styling the video details */
+        .video-details {
+            flex: 1;
+        }
+
+        /* Styling the video title */
+        .video-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        /* Styling the video channel */
+        .video-channel {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* Styling the video views */
+        .video-views {
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YouTube Clone</h1>
+    </header>
+    <main id="videos-container"></main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const videosContainer = document.getElementById('videos-container');
+
+            // Example data (in real-world scenario, this would come from an API)
+            const videosData = [
+                {
+                    title: 'Video 1',
+                    thumbnail: 'https://via.placeholder.com/240x135',
+                    channel: 'Channel 1',
+                    views: '1M views',
+                    timeAgo: '1 day ago'
+                },
+                {
+                    title: 'Video 2',
+                    thumbnail: 'https://via.placeholder.com/240x135',
+                    channel: 'Channel 2',
+                    views: '500k views',
+                    timeAgo: '2 days ago'
+                },
+                // Add more video data here
+            ];
+
+            // Function to create a video card
+            function createVideoCard(video) {
+                const videoCard = document.createElement('div');
+                videoCard.classList.add('video-card');
+
+                videoCard.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img src="${video.thumbnail}" alt="Video Thumbnail">
+                    </div>
+                    <div class="video-details">
+                        <h2 class="video-title">${video.title}</h2>
+                        <p class="video-channel">${video.channel}</p>
+                        <p class="video-views">${video.views} &bull; ${video.timeAgo}</p>
+                    </div>
+                `;
+
+                return videoCard;
+            }
+
+            // Render video cards
+            videosData.forEach(video => {
+                const videoCard = createVideoCard(video);
+                videosContainer.appendChild(videoCard);
+            });
+        });
+    </script>
+</body>
+</html>
