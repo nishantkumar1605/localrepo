@@ -1,2 +1,2 @@
 #this is a readme file
-hazel is a qt
+hazel is  a qt, fr
